@@ -37,7 +37,7 @@ highlight Constant ctermfg=113
 highlight PreProc ctermfg=199
 highlight Operator ctermfg=202
 highlight Todo ctermfg=1 ctermbg=yellow
-autocmd BufRead,BufNewFile * syn match parens /[()]/ | hi parens ctermfg=blue
+autocmd BufRead,BufNewFile * syn match parens /[()]/ | hi parens ctermfg=110
 autocmd FileType * call <SID>def_base_syntax() " autocmd Syntax may be better
 function! s:def_base_syntax()
   syntax match commonOperator "\(+\|=\|-\|\^\|\*\)"
