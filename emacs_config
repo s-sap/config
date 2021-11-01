@@ -1,0 +1,17 @@
+;; My Config                                                                                                        
+                                                                                                                    
+(global-linum-mode)                                                                                                 
+(setq linum-format "%4d \u2502 ")                                                                                   
+                                                                                                                    
+(setq backup-directory-alist `(("." . "~/.saves")))                                                                 
+;(global-display-line-numbers-mode)                                                                                 
+(global-hl-line-mode)                                                                                               
+(package-initialize)                                                                                                
+(unless (display-graphic-p)                                                                                         
+  (menu-bar-mode -1))                                                                                               
+                                                                                                                    
+(setq-default indent-tabs-mode t)                                                                                   
+(setq-default tab-width 4)                                                                                          
+(defvaralias 'c-basic-offset 'tab-width)                                                                            
+                                                                                                                    
+(display-time-mode 1)
