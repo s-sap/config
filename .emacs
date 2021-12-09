@@ -1,26 +1,30 @@
 ;; My Config                                                                                                        
-                                                                                                                    
+
+;; Line Numbers
 (global-linum-mode)                                                                                                 
-(setq linum-format "%4d \u2502 ")                                                                                   
-                                                                                                                    
-(setq backup-directory-alist `(("." . "~/.saves")))                                                                 
-;(global-display-line-numbers-mode)                                                                                 
+                                                                                  
+;; Save edited tmp files
+(setq backup-directory-alist `(("." . "~/.saves")))
+
+;; Personal View Preference
+(setq linum-format "%4d \u2502 ")
 (global-hl-line-mode)                                                                                               
 (package-initialize)                                                                                                
 (unless (display-graphic-p)                                                                                         
-  (menu-bar-mode -1))                                                                                               
-                                                                                                                    
+  (menu-bar-mode -1))
+(display-time-mode 1)
+
+;; Tab == 4 spaces 
 (setq-default indent-tabs-mode t)                                                                                   
 (setq-default tab-width 4)                                                                                          
 (defvaralias 'c-basic-offset 'tab-width)                                                                                                                    
-(display-time-mode 1)
-
 
 ;; My Themes                                                                                                        
 (setq c-default-style "linux")                                                                                      
 (setq c-basic-offset 4)                                                                                             
 (c-set-offset 'comment-intro 0)                                                                                     
-                                                                                                                    
+
+;; Theme Path
 (add-to-list 'custom-theme-load-path "~/.emacs.d/theme/atom-one-dark-theme")                                        
 (load-theme 'atom-one-dark t)                                                                                       
 (custom-set-variables                                                                                               
