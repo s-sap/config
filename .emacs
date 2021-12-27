@@ -1,31 +1,30 @@
-;; My Config                                                                                                        
+;;( My Config )                                                                                                     
 
-;; Line Numbers
-(global-linum-mode)                                                                                                 
-                                                                                  
-;; Save edited tmp files
-(setq backup-directory-alist `(("." . "~/.saves")))
-
-;; Personal View Preference
-(setq linum-format "%4d \u2502 ")
-(global-hl-line-mode)                                                                                               
-(package-initialize)                                                                                                
-(unless (display-graphic-p)                                                                                         
-  (menu-bar-mode -1))
+(global-linum-mode)
+(global-hl-line-mode)
 (display-time-mode 1)
+(setq linum-format " %2d\u2502")
+(setq backup-directory-alist `(("." . "~/.saves")))
+(package-initialize)
+(unless (display-graphic-p)
+  (menu-bar-mode -1))
+(setq-default indent-tabs-mode t)
+(setq-default tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
 
-;; Tab == 4 spaces 
-(setq-default indent-tabs-mode t)                                                                                   
-(setq-default tab-width 4)                                                                                          
-(defvaralias 'c-basic-offset 'tab-width)                                                                                                                    
+(set-face-foreground 'font-lock-comment-face "#7c756c")
+
+(global-set-key (kbd "C-t") 'tab-new)
+(global-set-key (kbd "M-s") 'tab-switcher)
+(global-set-key (kbd "C-x C-q") 'tab-close)
+
 
 ;; My Themes                                                                                                        
-(setq c-default-style "linux")                                                                                      
-(setq c-basic-offset 4)                                                                                             
-(c-set-offset 'comment-intro 0)                                                                                     
+(setq c-default-style "linux")
+(setq c-basic-offset 4)
+(c-set-offset 'comment-intro 0)
 
-;; Theme Path
-(add-to-list 'custom-theme-load-path "~/.emacs.d/theme/atom-one-dark-theme")                                        
+(add-to-list 'custom-theme-load-path "~/.emacs.d/atom-one-dark-theme")
 (load-theme 'atom-one-dark t)                                                                                       
 (custom-set-variables                                                                                               
  ;; custom-set-variables was added by Custom.                                                                       
