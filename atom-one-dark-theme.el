@@ -10,7 +10,6 @@
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
 
-
 (deftheme atom-one-dark
   "Atom One Dark - An Emacs port of the Atom One Dark theme from Atom.io.")
 
@@ -18,18 +17,18 @@
   (let* ((256color  (eq (display-color-cells (selected-frame)) 256))
          (colors `(("atom-one-dark-accent"   . "#528BFF")
                    ("atom-one-dark-fg"       . (if ,256color "color-248" "#ABB2BF"))
-                   ("atom-one-dark-bg"       . (if ,256color "color-235" "#282C34"))
+                   ("atom-one-dark-bg"       . (if ,256color "color-10" "#282C34"))  ;; Background
                    ("atom-one-dark-bg-1"     . (if ,256color "color-234" "#121417"))
-                   ("atom-one-dark-bg-hl"    . (if ,256color "color-236" "#2C323C"))
-                   ("atom-one-dark-gutter"   . (if ,256color "color-239" "#4B5363"))
-                   ("atom-one-dark-mono-1"   . (if ,256color "color-248" "#ABB2BF"))
+                   ("atom-one-dark-bg-hl"    . (if ,256color "color-238" "#2C323C"))
+                   ("atom-one-dark-gutter"   . (if ,256color "color-248" "#4B5363")) ;; Line Number
+                   ("atom-one-dark-mono-1"   . (if ,256color "color-255" "#ABB2BF"))
                    ("atom-one-dark-mono-2"   . (if ,256color "color-244" "#828997"))
                    ("atom-one-dark-mono-3"   . (if ,256color "color-240" "#5C6370"))
                    ("atom-one-dark-cyan"     . "#56B6C2")
                    ("atom-one-dark-blue"     . "#61AFEF")
                    ("atom-one-dark-purple"   . "#C678DD")
-                   ("atom-one-dark-green"    . "#98C379")
-                   ("atom-one-dark-red-1"    . "#E06C75")
+                   ("atom-one-dark-green"    . "#91ba75")
+                   ("atom-one-dark-red-1"    . "#c94a55")
                    ("atom-one-dark-red-2"    . "#BE5046")
                    ("atom-one-dark-orange-1" . "#D19A66")
                    ("atom-one-dark-orange-2" . "#E5C07B")
@@ -583,7 +582,7 @@
    `(linum-highlight-face ((t (:foreground ,atom-one-dark-fg :background ,atom-one-dark-bg))))
    ;; native line numbers (emacs version >=26)
    `(line-number ((t (:foreground ,atom-one-dark-gutter :background ,atom-one-dark-bg))))
-   `(line-number-current-line ((t (:foreground ,atom-one-dark-fg :background ,atom-one-dark-bg))))
+   `(line-number-current-line ((t (:foreground ,atom-one-dark-cyan :background ,atom-one-dark-cyan))))
 
    ;; regexp-builder
    `(reb-match-0 ((t (:background ,atom-one-dark-gray))))
