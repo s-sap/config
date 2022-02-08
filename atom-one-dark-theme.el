@@ -17,7 +17,7 @@
   (let* ((256color  (eq (display-color-cells (selected-frame)) 256))
          (colors `(("atom-one-dark-accent"   . "#528BFF")
                    ("atom-one-dark-fg"       . (if ,256color "color-248" "#ABB2BF"))
-                   ("atom-one-dark-bg"       . (if ,256color "color-10" "#282C34"))  ;; Background
+                   ("atom-one-dark-bg"       . "#1F2126")  ;; Background
                    ("atom-one-dark-bg-1"     . (if ,256color "color-234" "#121417"))
                    ("atom-one-dark-bg-hl"    . (if ,256color "color-238" "#2C323C"))
                    ("atom-one-dark-gutter"   . (if ,256color "color-248" "#4B5363")) ;; Line Number
@@ -71,7 +71,7 @@
    `(tooltip ((t (:foreground ,atom-one-dark-fg :background ,atom-one-dark-bg-1 :inherit variable-pitch))))
 
    `(font-lock-builtin-face ((t (:foreground ,atom-one-dark-cyan))))
-   `(font-lock-comment-face ((t (:foreground ,atom-one-dark-mono-3 :slant italic))))
+   `(font-lock-comment-face ((t (:foreground ,atom-one-dark-mono-1 :slant italic))))
    `(font-lock-comment-delimiter-face ((default (:inherit (font-lock-comment-face)))))
    `(font-lock-doc-face ((t (:inherit (font-lock-string-face)))))
    `(font-lock-function-name-face ((t (:foreground ,atom-one-dark-blue))))
@@ -581,8 +581,8 @@
    ;; hlinum
    `(linum-highlight-face ((t (:foreground ,atom-one-dark-fg :background ,atom-one-dark-bg))))
    ;; native line numbers (emacs version >=26)
-   `(line-number ((t (:foreground ,atom-one-dark-gutter :background ,atom-one-dark-bg))))
-   `(line-number-current-line ((t (:foreground ,atom-one-dark-cyan :background ,atom-one-dark-cyan))))
+   `(line-number ((t (:foreground ,atom-one-dark-silver :background ,atom-one-dark-bg))))
+   `(line-number-current-line ((t (:foreground ,atom-one-dark-red-1 :background ,atom-one-dark-gray))))
 
    ;; regexp-builder
    `(reb-match-0 ((t (:background ,atom-one-dark-gray))))
