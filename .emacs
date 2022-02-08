@@ -1,55 +1,59 @@
-;;( My Config )                                                                                                     
+;; [ Emacs Config ]
 
-(global-linum-mode)
-(global-hl-line-mode)
-(display-time-mode 1)
-(setq linum-format " %2d\u2502")
-(setq backup-directory-alist `(("." . "~/.saves")))
+;;(require 'package)
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+;; emacs's packages
+;;(require 'dashboard)
+;;(dashboard-setup-startup-hook)
+;;(ac-config-default)
+;;(doom-modeline-mode 1)
 (package-initialize)
-(unless (display-graphic-p)
-  (menu-bar-mode -1))
-(setq-default indent-tabs-mode t)
+
+;; Load Editor Theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/atom-one-dark-theme")
+(load-theme 'atom-one-dark t)
+
+;; Custom Color
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-comment-face ((t (:foreground "gray55" :slant oblique))))
+ '(region ((t (:extend t :background "gray45")))))
+
+;; My Editor View
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+(global-hl-line-mode)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(setq c-default-style "linux")
+(setq c-basic-offset 4)
+(c-set-offset 'comment-intro 0)
+
+;; Emacs File Backup Save
+(setq backup-directory-alist `(("." . "~/.saves")))
+
+;; Indentation
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
+(setq indent-line-function 'insert-tab)
 
-(set-face-foreground 'font-lock-comment-face "#7c756c")
-
+;; My Emacs key binding
 (global-set-key (kbd "C-t") 'tab-new)
 (global-set-key (kbd "M-s") 'tab-switcher)
 (global-set-key (kbd "C-x C-q") 'tab-close)
 
 
-;; My Themes                                                                                                        
-(setq c-default-style "linux")
-(setq c-basic-offset 4)
-(c-set-offset 'comment-intro 0)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/atom-one-dark-theme")
-(load-theme 'atom-one-dark t)                                                                                       
-(custom-set-variables                                                                                               
- ;; custom-set-variables was added by Custom.                                                                       
- ;; If you edit it by hand, you could mess it up, so be careful.                                                    
- ;; Your init file should contain only one such instance.                                                           
- ;; If there is more than one, they won't work right.                                                               
- '(ansi-color-faces-vector                                                                                          
-   [default default default italic underline success warning error])                                                
- '(ansi-color-names-vector                                                                                          
-   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])                               
- '(custom-enabled-themes '(atom-one-dark))                                                                          
- '(custom-safe-themes                                                                                               
-   '("0c860c4fe9df8cff6484c54d2ae263f19d935e4ff57019999edbda9c7eda50b8" default))                                   
- '(fci-rule-color "#3E4451")                                                                    
- '(tetris-x-colors                                                                                                  
-   [[229 192 123]                                                                                                   
-    [97 175 239]                                                                                                    
-    [209 154 102]                                                                                                   
-    [224 108 117]                                                                                                   
-    [152 195 121]                                                                                                   
-    [198 120 221]                                                                                                   
-    [86 182 194]]))                                                                                                 
-(custom-set-faces                                                                                                   
- ;; custom-set-faces was added by Custom.                                                                           
- ;; If you edit it by hand, you could mess it up, so be careful.                                                    
- ;; Your init file should contain only one such instance.                                                           
- ;; If there is more than one, they won't work right.                                                               
- )
+;;(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+;; '(inhibit-startup-screen t)
+;; '(package-selected-packages
+;;   '(eshell-toggle php-mode doom-modeline dashboard auto-complete)))
+
