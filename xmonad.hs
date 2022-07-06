@@ -16,6 +16,7 @@ import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Actions.GridSelect
+import XMonad.Actions.GroupNavigation
 
 import XMonad.Prompt
 import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
@@ -140,9 +141,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [ ((modMask .|. shiftMask, xK_Return),
      spawn $ XMonad.terminal conf)
 
-  -- Lock the screen using xscreensaver.
-  , ((modMask .|. shiftMask, xK_t),
-     spawn "xscreensaver-command --lock")
+  -- [ On / Off ] Network
+  , ((modMask .|. shiftMask, xK_o),
+     spawn "nmcli networking off")
+  , ((modMask, xK_o),
+     spawn "nmcli networking on")
 
  -- launch dmenu
   , ((modMask, xK_p),
@@ -176,14 +179,18 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_space),
      setLayout $ XMonad.layoutHook conf)
 
+  -- -- Move focus to the next window.
+  -- , ((modMask, xK_Tab),
+  --    windows W.focusDown)
+
+-- use Alt+Tab and Alt+Shift+Tab to change focus to different windows across workspaces
+  , ((modMask, xK_Tab), nextMatch Forward isOnAnyVisibleWS)
+  , ((modMask .|. shiftMask, xK_Tab), nextMatch Backward isOnAnyVisibleWS)
+
   -- Resize viewed windows to the correct size.
   , ((modMask, xK_n),
      refresh)
-
-  -- Move focus to the next window.
-  , ((modMask, xK_Tab),
-     windows W.focusDown)
-
+  
   -- Move focus to the next window.
   , ((modMask, xK_j),
      windows W.focusDown)
@@ -211,12 +218,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Shrink the master area.
   , ((modMask, xK_h),
      sendMessage Shrink)
-
-  -- Shrink the master area.
- -- , ((modMask .|. shiftMask, xK_Right),
- --    sendMessage Shrink)
-
-
 
   -- Expand the master area.
   , ((modMask, xK_l),
@@ -306,7 +307,7 @@ main = do
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          , ppSep = "  "
+          , ppSep = "    "
       }
       , manageHook = manageDocks <+> myManageHook
       , startupHook = setWMName "LG3D"
