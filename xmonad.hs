@@ -1,8 +1,3 @@
-
--- xmonad config used by Vic Fryzel
--- Author: Vic Fryzel
--- http://github.com/vicfryzel/xmonad-config
-
 import System.IO
 import System.Exit
 import XMonad
@@ -38,11 +33,7 @@ myEmacs         = "emacs"
 
 ------------------------------------------------------------------------
 -- Workspaces
--- The default number of workspaces (virtual screens) and their names.
---
-myWorkspaces = [" dev "," www "," emacs "," term "," media "]
-
-
+myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 ------------------------------------------------------------------------
 -- Window rules
 -- Execute arbitrary actions and WindowSet manipulations when managing
@@ -58,10 +49,9 @@ myWorkspaces = [" dev "," www "," emacs "," term "," media "]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "Mozilla Firefox" --> doShift "www"
+    [ className =? "Mozilla Firefox" --> doShift "3"
     , className =? "Google-chrome"   --> doShift "2:web"
     , className =? "skype"           --> doShift "3:im"
-    , className =? "pidgin"  	     --> doShift "3:im"
     , className =? "Icedove"         --> doShift "3:mail"
     , resource  =? "desktop_window"  --> doIgnore
     , className =? "Galculator"      --> doFloat
@@ -86,14 +76,12 @@ myManageHook = composeAll
 --
 myLayout = avoidStruts (
     Tall 1 (3/100) (1/2) |||
-    tabbed shrinkText tabConfig |||
-    noBorders (fullscreenFull Full)
+    noBorders (fullscreenFull Full))
 
 
 ------------------------------------------------------------------------
 -- Colors and borders
 -- Currently based on the ir_black theme.
---
 myNormalBorderColor  = "black"
 myFocusedBorderColor = "#777777"
 
@@ -313,7 +301,7 @@ myStartupHook = return ()
 --
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ defaults {
+  xmonad $ docks defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
@@ -354,25 +342,6 @@ defaults = defaultConfig {
 }
 
 
-
--- -- xmonad example config file.
-
--- -- A template showing all available configuration hooks,
--- -- and how to override the defaults in your own xmonad.hs conf file.
-
--- -- Normally, you'd only override those defaults you care about.
-
--- -- https://www.youtube.com/watch?v=T0i65NXP5P4
-
--- import XMonad
--- import Data.Monoid
--- import System.Exit
--- import XMonad.Util.Run
--- import XMonad.Hooks.ManageDocks
--- import XMonad.Hooks.DynamicLog
-
--- import qualified XMonad.StackSet as W
--- import qualified Data.Map        as M
 
 -- -- The preferred terminal program, which is used in a binding below and by
 -- -- certain contrib modules.
