@@ -16,7 +16,7 @@ alias enw="emacs -nw -Q --eval '(menu-bar-mode -1)' --eval '(global-display-line
 alias open="xdg-open"
 
 
-Preferred editor for local and remote sessions
+#Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='enw'
 else
