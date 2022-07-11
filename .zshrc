@@ -11,8 +11,11 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-
-alias enw="emacs -nw -Q --eval '(menu-bar-mode -1)' --eval '(global-display-line-numbers-mode)' -bg black"
+# To exec when enw is open
+emacs_eval="--eval '(menu-bar-mode -1)' \
+	    --eval '(global-display-line-numbers-mode)'"
+# Emacs 4 Terminal
+alias enw="emacs -nw -Q $emacs_eval -bg black"
 alias open="xdg-open"
 
 
