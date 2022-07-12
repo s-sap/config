@@ -8,15 +8,15 @@ import XMonad.Hooks.SetWMName
 import XMonad.Hooks.FadeInactive
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
-import XMonad.Layout.Spiral
-import XMonad.Layout.Tabbed
-import XMonad.Layout.ThreeColumns
+import XMonad.Layout.Spacing
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Actions.GridSelect
 import XMonad.Actions.GroupNavigation
+
+
 
 import XMonad.Prompt
 import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
@@ -29,7 +29,7 @@ import XMonad.Prompt.AppendFile (appendFilePrompt)
 --
 myTerminal      = "alacritty"
 myBrowser       = "firefox"
-myEmacs         = "emacs"
+myEmacs         = "emacsclient -c"
 
 
 ------------------------------------------------------------------------
@@ -87,15 +87,15 @@ myLayout = avoidStruts (
 myNormalBorderColor  = "black"
 myFocusedBorderColor = "#777777"
 
--- Colors for text and backgrounds of each tab when in "Tabbed" layout.
-tabConfig = defaultTheme {
-    activeBorderColor = "#7C7C7C",
-    activeTextColor = "#CEFFAC",
-    activeColor = "#000000",
-    inactiveBorderColor = "#7C7C7C",
-    inactiveTextColor = "#EEEEEE",
-    inactiveColor = "#000000"
-}
+-- -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
+-- tabConfig = defaultTheme {
+--     activeBorderColor = "#7C7C7C",
+--     activeTextColor = "#CEFFAC",
+--     activeColor = "#000000",
+--     inactiveBorderColor = "#7C7C7C",
+--     inactiveTextColor = "#EEEEEE",
+--     inactiveColor = "#000000"
+-- }
 
 -- Color of current window title in xmobar.
   -- Used to be #00CC00
@@ -304,7 +304,7 @@ main = do
   xmonad $ docks defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
-          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 60
+          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor "" . wrap "[ " " ]"
           , ppHiddenNoWindows = xmobarColor  xmobarTitleColor  ""
           , ppSep = "    "
@@ -332,7 +332,7 @@ defaults = defaultConfig {
     mouseBindings      = myMouseBindings,
 
     -- hooks, layouts
-    layoutHook         = smartBorders $ myLayout,
+    layoutHook         = myLayout,
     manageHook         = myManageHook,
     startupHook        = myStartupHook
 }

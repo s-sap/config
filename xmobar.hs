@@ -25,7 +25,7 @@ Config {
 
 	       , Run Uptime ["Up: <hours>h"] 360
                , Run StdinReader
-               , Run Date           "<fc=#ABABAB>%F (%a)</fc>" "date" 10
+               , Run Date           "<fc=#ABABAB>  %F (%a)</fc>  %H:%M:%S   " "date" 10
 
                ],
     sepChar = "%",

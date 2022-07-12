@@ -11,5 +11,8 @@ xset r rate 300 60
 # Network Off on boot
 nmcli networking off
 
+/usr/bin/emacs --daemon &
+
+
 exec xmonad
 
