@@ -16,8 +16,6 @@ import qualified Data.Map        as M
 import XMonad.Actions.GridSelect
 import XMonad.Actions.GroupNavigation
 
-
-
 import XMonad.Prompt
 import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
 import XMonad.Prompt.AppendFile (appendFilePrompt)
@@ -29,7 +27,7 @@ import XMonad.Prompt.AppendFile (appendFilePrompt)
 --
 myTerminal      = "alacritty"
 myBrowser       = "firefox"
-myEmacs         = "emacsclient -c"
+myEmacs         = "emacsclient -c -e '(switch-to-buffer \"*dashboard*\")'"
 
 
 ------------------------------------------------------------------------
@@ -159,7 +157,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- launch Emacs
   , ((modMask, xK_x),
      spawn (myEmacs))
-
+  
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --

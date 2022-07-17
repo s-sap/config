@@ -19,10 +19,9 @@ alias enw="emacs -nw -Q $emacs_eval -bg black"
 alias open="xdg-open"
 
 
-#Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='enw'
-else
-  export EDITOR='enw'
+# Tmux Start
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
 fi
+
 
