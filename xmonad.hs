@@ -83,27 +83,16 @@ myLayout = avoidStruts (
 -- Colors and borders
 -- Currently based on the ir_black theme.
 myNormalBorderColor  = "black"
-myFocusedBorderColor = "#777777"
-
--- -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
--- tabConfig = defaultTheme {
---     activeBorderColor = "#7C7C7C",
---     activeTextColor = "#CEFFAC",
---     activeColor = "#000000",
---     inactiveBorderColor = "#7C7C7C",
---     inactiveTextColor = "#EEEEEE",
---     inactiveColor = "#000000"
--- }
+myFocusedBorderColor = "#999999"
 
 -- Color of current window title in xmobar.
-  -- Used to be #00CC00
 xmobarTitleColor = "#d9d9d9"
 
 -- Color of current workspace in xmobar.
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 -- Width of the window border in pixels.
-myBorderWidth = 2
+myBorderWidth = 1
 
 
 colorOrange         = "#FD971F"
@@ -178,9 +167,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_space),
      setLayout $ XMonad.layoutHook conf)
 
-  -- -- Move focus to the next window.
-  -- , ((modMask, xK_Tab),
-  --    windows W.focusDown)
 
 -- use Alt+Tab and Alt+Shift+Tab to change focus to different windows across workspaces
   , ((modMask, xK_Tab), nextMatch Forward isOnAnyVisibleWS)

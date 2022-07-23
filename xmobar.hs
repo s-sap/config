@@ -25,7 +25,7 @@ Config {
                , Run DiskU [("/home", "hdd: <free>")] [] 60
 	       , Run Uptime ["Up: <hours>h"] 360
                , Run StdinReader
-               , Run Date           "   %F %a  <fc=#ABABAB> [  %H:%M:%S ]</fc>" "date" 10
+               , Run Date           "   %m-%d-%Y || %a  <fc=#ABABAB> [  %H:%M:%S ]</fc>" "date" 10
 
                ],
     sepChar = "%",
