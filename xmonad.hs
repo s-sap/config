@@ -15,6 +15,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Actions.GridSelect
 import XMonad.Actions.GroupNavigation
+import XMonad.Actions.WindowBringer
 
 import XMonad.Prompt
 import XMonad.Prompt.RunOrRaise (runOrRaisePrompt)
@@ -146,11 +147,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- launch Emacs
   , ((modMask, xK_x),
      spawn (myEmacs))
+
   
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
-
   -- Close focused window.
   , ((modMask .|. shiftMask, xK_c),
      kill)
@@ -168,9 +169,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      setLayout $ XMonad.layoutHook conf)
 
 
--- use Alt+Tab and Alt+Shift+Tab to change focus to different windows across workspaces
+  -- use Alt+Tab and Alt+Shift+Tab to change focus to different windows across workspaces
   , ((modMask, xK_Tab), nextMatch Forward isOnAnyVisibleWS)
-  , ((modMask .|. shiftMask, xK_Tab), nextMatch Backward isOnAnyVisibleWS)
+  
+  -- Switch between application with dmenu
+  , ((modMask .|. shiftMask, xK_Tab), gotoMenu)
 
   -- Resize viewed windows to the correct size.
   , ((modMask, xK_n),
@@ -253,7 +256,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Focus rules
 -- True if your focus should follow your mouse cursor.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
   [
